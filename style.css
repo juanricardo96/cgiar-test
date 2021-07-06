@@ -51,7 +51,7 @@
     text-align: center;
     z-index: 20;
     position: absolute;
-    top: 6vw;
+    top: 9vw;
     left: 20vw;
     width: 600px;
     overflow-y: scroll;
@@ -95,8 +95,8 @@
         text-align: center;
         z-index: 20;
         position: absolute;
-        top: 6vw;
-        left: 20vw;
+        top: 10vw;
+        left: 15vw;
         width: 600px;
         overflow-y: scroll;
         height: 550px;
