@@ -20,20 +20,24 @@
   </head>
   <body class="background">
     <div class="container mt-5" id="app">
-      <h3 class="title col-12">{{titulo_partners}}</h3>
-      <div class="image-background p-3 my-5">
-        <div class="p-5">
-          <img src="img/logo-cgiar.png" width="400px">
+        <a href="index.html"><img src="img/return.png" width="40px"></a>
+        <h3 class="title col-12">{{titulo_partners}}</h3>
+        <div class="image-background p-3 my-5">
+            <div class="p-5">
+            <img src="img/logo-cgiar.png" width="400px">
+            </div>
         </div>
-      </div>
-      <div class="row list-background p-3 my-5">
-        <div v-if="lista===true" class="mt-2 list" v-for="item of partners">
-            {{item.nombre}} <p v-if="item.acronimo!=''">({{item.acronimo}})</p> - {{item.ciudad}}, {{item.pais}} - <p v-if="item.website!=''">{{item.website}}</p>
+        <div class="row list-background p-3 my-5">
+            <div v-if="lista===true" class="mt-2 list" v-for="item of partners">
+                {{item.nombre}} 
+                <p v-if="item.acronimo!=''">({{item.acronimo}})</p> - {{item.ciudad}}, {{item.pais}} - {{item.tipo}}
+                <p v-if="item.website!=''"> - {{item.website}}</p>
+                <hr class="my-3">
+            </div>
+            <div class="mt-2 list" v-if="lista===false">
+                La lista esta vacia.
+            </div>
         </div>
-        <div class="mt-2 list" v-if="lista===false">
-            La lista esta vacia.
-        </div>
-      </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
