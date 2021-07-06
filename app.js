@@ -13,11 +13,16 @@ const app = new Vue({
         link: '',
         branch: '',
         lista: false, 
-        validado: false,
+        validado: null,
         foo: false
     },
     methods: {
         addPartner: function(){
+            console.log("branch", this.branch)
+            if(this.branch != '' && this.name != '' && this.type != '' && this.country != '' && this.city != ''){
+                this.validado = true
+            }
+            if(this.validado===true){
             this.partners.push({
                 sucursal: this.branch,
                 acronimo: this.acronym,
@@ -27,24 +32,19 @@ const app = new Vue({
                 ciudad: this.city,
                 website: this.link
             });
-            console.log("branch", this.branch)
-            if(this.branch != '' && this.name != '' && this.type != '' && this.country != '' && this.city != ''){
-                this.validado = true
-                console.log("completo")
-            }
-            if(this.validado===true){
-                console.log("Agrego partner", this.partners);
-                localStorage.setItem('cgiar-vue', JSON.stringify(this.partners)); 
-                this.branch = '',
-                this.acronym = '',
-                this.name = '',
-                this.type = '',
-                this.country = '',
-                this.city = '',
-                this.link = ''
-            }else{
-                console.log("Ingrese datos restantes")
-            }
+            console.log("Agrego partner", this.partners);
+            localStorage.setItem('cgiar-vue', JSON.stringify(this.partners)); 
+            this.branch = '',
+            this.acronym = '',
+            this.name = '',
+            this.type = '',
+            this.country = '',
+            this.city = '',
+            this.link = ''
+            setTimeout ("window.location='partners.html'", 5000);
+        }else{
+            console.log("Ingrese datos restantes")
+        }
         }
     },
     created: function(){
@@ -54,7 +54,6 @@ const app = new Vue({
         } else {
             this.partners = datosDB;
             this.lista = true;
-            console.log("entro")
         }
     }
 });
